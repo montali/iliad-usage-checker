@@ -5,7 +5,7 @@ This works by exploiting the Selenium APIs to fetch the `/account` page. Notice 
 Therefore, before doing anything, the bot checks if we're connected to the home WiFi.
 If everything's alright, it fetches the data usage and writes it to a file. This was made to be added as a cronjob and `cat` the file when a new shell is created.
 
-![Screenshot][readme_res/screenshot]
+![Screenshot][readme_res/screenshot.png]
 
 ## Usage
 
