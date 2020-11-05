@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-w', '--wifi',
                     dest='wifi', type=str, required=True)
 parser.add_argument('-f', '--file',
-                    dest='file', type=argparse.FileType('w'), required=True)
+                    dest='file', type=argparse.FileType('a'), required=True)
 args = parser.parse_args()
 
 # The SSID getting method is platform specific.
@@ -40,4 +40,6 @@ driver.get(ACCOUNT_URL)
 infos = []
 while infos == []:  # We'll wait for the page to load
     infos = driver.find_elements_by_class_name(INFO_CSS_CLASS)
+args.file.seek(0, 0)
+args.file.truncate()
 args.file.write(infos[2].text.split("\n")[0])
