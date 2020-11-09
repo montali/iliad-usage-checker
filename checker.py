@@ -1,3 +1,6 @@
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
@@ -36,10 +39,8 @@ options = Options()
 options.headless = HEADLESS
 driver = webdriver.Firefox(options=options)
 driver.get(ACCOUNT_URL)
-
-infos = []
-while infos == []:  # We'll wait for the page to load
-    infos = driver.find_elements_by_class_name(INFO_CSS_CLASS)
+driver.implicitly_wait(10)  # seconds
+infos = driver.find_elements_by_class_name(INFO_CSS_CLASS)
 args.file.seek(0, 0)
 args.file.truncate()
 args.file.write(infos[2].text.split("\n")[0])
